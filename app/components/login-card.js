@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import LoginValidations from '../validations/user';
+import LoginValidations from '../validations/login';
 import lookupValidator from 'ember-changeset-validations';
 import Changeset from 'ember-changeset';
 

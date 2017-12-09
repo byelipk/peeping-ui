@@ -1,22 +1,29 @@
 {{#x-card
-  onsubmit=attrs.onsubmit
+  onsubmit=(action 'onsubmit')
   title='Register with Peeping'
+  buttonDisabled=changeset.isInvalid
   buttonText='Register'}}
   <div class="row">
     {{x-input
       classNames='col s12'
+      changeset=changeset
+      property='email'
       type='email'
       label='Username'}}
   </div>
   <div class="row">
     {{x-input
       classNames='col s12'
+      changeset=changeset
+      property='password'
       type='password'
       label='Password'}}
   </div>
   <div class="row">
     {{x-input
       classNames='col s12'
+      changeset=changeset
+      property='passwordConfirmation'
       type='password'
       label='Confirm Password'}}
   </div>
