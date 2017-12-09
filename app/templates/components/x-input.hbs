@@ -1,13 +1,10 @@
 <input  
-  value={{value}}
+  value={{get changeset property}}
   type={{type}}
-  class="{{if value
-    (concat
-      "validate"
-      " "
-      (if errors.length "invalid" "valid")
-    )
-  }}"
-  onchange={{action (mut value) value=target.value}}
-  onkeyup={{action (mut value) value=target.value}} />
+  oninput={{action (mut (get changeset property)) value="target.value"}} />
 <label data-error={{_errorMessages}}>{{label}}</label>
+{{#if (get changeset.error property)}}
+  {{#each (get (get changeset.error property) 'validation') as |validation| }}
+    <p>{{validation}}</p>
+  {{/each}}
+{{/if}}

@@ -5,5 +5,9 @@ export default Route.extend({
     doRegister() {
       alert("HOLY GRAIL!")
     }
+  },
+
+  model() {
+    return this.store.createRecord('user');
   }
 });
