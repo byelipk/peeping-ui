@@ -1,9 +1,11 @@
 import DS from 'ember-data';
 import config from '../config/environment';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
+import AdapterFetch from 'ember-fetch/mixins/adapter-fetch';
 
 export default DS.JSONAPIAdapter.extend(
-  DataAdapterMixin, {
+  DataAdapterMixin,
+  AdapterFetch, {
 
   host: config.DS.host,
   namespace: config.DS.namespace,

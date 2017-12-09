@@ -13,7 +13,6 @@ export default Route.extend({
               .then(() => this.transitionTo('auth.login') )
               .catch(() => {
                 changeset.rollback();
-
                 get(this, 'model.errors').forEach(({ attribute, message }) => {
                   changeset.pushErrors(attribute, message);
                 });
