@@ -6,11 +6,20 @@ export default Route.extend({
   actions: {
     doRegister(changeset) {
       changeset.validate()
-      .then(function validated() {
-        if (isEmpty(get(changeset, 'errors'))) {
-          // Save to server...
-        }
-      });
+        .then(() => {
+          if (isEmpty(get(changeset, 'errors'))) {
+            changeset
+              .save()
+              .then(() => this.transitionTo('auth.login') )
+              .catch(() => {
+                changeset.rollback();
+
+                get(this, 'model.errors').forEach(({ attribute, message }) => {
+                  changeset.pushErrors(attribute, message);
+                });
+              });
+          }
+        })
     }
   },
 
