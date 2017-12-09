@@ -44,6 +44,9 @@
     "ember-welcome-page": "^3.0.0",
     "loader.js": "^4.2.3"
   },
+  "fastbootDependencies": [
+    "node-fetch"
+  ],
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
   }
