@@ -23,6 +23,10 @@ module.exports = function(environment) {
       // when it is created
     },
 
+    fastboot: {
+      hostWhitelist: [ /^localhost:\d+$/]
+    },
+
     DS: {
       host: 'http://localhost:4000',
       namespace: 'api'
@@ -51,6 +55,7 @@ module.exports = function(environment) {
   if (environment === 'production') {
     // here you can enable a production-specific feature
     ENV.DS.host = "https://whispering-refuge-78580.herokuapp.com/";
+    ENV.fastboot.hostWhitelist = [ ENV.DS.host ]
   }
 
   return ENV;
