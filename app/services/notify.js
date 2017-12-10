@@ -23,5 +23,13 @@ export default Service.extend({
         localStorage.removeItem('session-invalidated');
       }
     } 
+  },
+
+  displayRegistrationSuccess() {
+    this.get('flashMessages').success('Thank you for registering!');
+  },
+
+  displayLoginSuccess() {
+    this.get('flashMessages').success('Welcome! 😁');
   }
 });

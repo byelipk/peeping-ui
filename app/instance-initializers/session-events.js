@@ -2,6 +2,10 @@ export function initialize(appInstance) {
   var notify = appInstance.lookup('service:notify');
   var session = appInstance.lookup('service:session');
 
+  session.on('authenticationSucceeded', function() {
+    notify.displayLoginSuccess();
+  });
+
   session.on('invalidationSucceeded', function() {
     notify.setSessionInvalidationToken();
   });
