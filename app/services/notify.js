@@ -29,7 +29,15 @@ export default Service.extend({
     this.get('flashMessages').success('Thank you for registering!');
   },
 
+  displayRegistrationFailure() {
+    this.get('flashMessages').warning('Opps, there was a problem creating your account.');
+  },
+
   displayLoginSuccess() {
     this.get('flashMessages').success('Welcome! 😁');
+  },
+
+  displayLoginFailure() {
+    this.get('flashMessages').warning('Invalid login credentials.');
   }
 });

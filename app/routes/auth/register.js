@@ -19,7 +19,8 @@ export default Route.extend({
               })
               .catch(() => {
                 changeset.rollback();
-                get(this, 'model.errors').forEach(({ attribute, message }) => {
+                this.get('notify').displayRegistrationFailure();
+                get(this, 'currentModel.errors').forEach(({ attribute, message }) => {
                   changeset.pushErrors(attribute, message);
                 });
               });

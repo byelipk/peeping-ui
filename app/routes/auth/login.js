@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 
 export default Route.extend({
   session: service(),
+  notify: service(),
 
   actions: {
     doLogin(changeset) {
@@ -12,12 +13,16 @@ export default Route.extend({
       changeset.validate()
         .then(function validated() {
           if (get(changeset, 'isValid')) {
-            session.authenticate(
+            return session.authenticate(
               'authenticator:peeping', 
               changeset.get('email'), 
               changeset.get('password')
             );
           }
+        })
+        .catch(() => {
+          this.get('notify').displayLoginFailure();
+          changeset.rollback();
         });
     }
   },
