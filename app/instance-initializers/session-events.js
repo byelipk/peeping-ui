@@ -1,11 +1,9 @@
 export function initialize(appInstance) {
+  var notify = appInstance.lookup('service:notify');
   var session = appInstance.lookup('service:session');
-  var fastboot = appInstance.lookup('service:fastboot');
 
   session.on('invalidationSucceeded', function() {
-    if (!fastboot.get('isFastBoot') && localStorage) {
-      localStorage.setItem('session-invalidated', 1);
-    }
+    notify.setSessionInvalidationToken();
   });
 }
 
