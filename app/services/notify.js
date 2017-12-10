@@ -39,5 +39,9 @@ export default Service.extend({
 
   displayLoginFailure() {
     this.get('flashMessages').warning('Invalid login credentials.');
+  },
+
+  displayServerFailure() {
+    this.get('flashMessages').warning('There was a problem with the server.');
   }
 });

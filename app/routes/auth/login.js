@@ -20,8 +20,16 @@ export default Route.extend({
             );
           }
         })
-        .catch(() => {
-          this.get('notify').displayLoginFailure();
+        .catch(response => {
+          var errorCodes = response.errors.mapBy('code');
+
+          if (errorCodes.indexOf(401) >= 0 || errorCodes.indexOf(404) >= 0) {
+            this.get('notify').displayLoginFailure();
+          }
+          else {
+            this.get('notify').displayServerFailure();
+          }
+
           changeset.rollback();
         });
     }
